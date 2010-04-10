@@ -29,3 +29,31 @@ my $structure_hr = get($search_hr)
 TODO
 ----
 - Iteration on search results?
+
+melcer.cz
+---------
+method: POST
+action: sindex.php?akc=hledanir&s=0&kos=0&autor=$autor&nazev=$nazev&kateg=
+params:
+- hltext: query
+- hledani: Hledat
+
+method: POST
+action: sindex.php?akc=hledanir&s=0&kos=0&autor=$autor&nazev=$nazev&kateg=
+params:
+- autor: query_author
+- nazev: query_title
+- Submit2: Hledat
+
+method: POST
+action: sindex.php?akc=hledanirok&s=0&kos=0&odroku=$odroku&doroku=$doroku&kateg=
+params:
+- odroku: query_year_from
+- doroku: query_year_to
+- Submit22: Hledat
+
+method: POST
+action: sindex.php?akc=hledanivyd&s=0&kos=0&vydavatel=$vydavatel&kateg=
+params:
+- vydavatel: query_publisher
+- Submit222: Hledat
