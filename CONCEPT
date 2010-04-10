@@ -1,0 +1,31 @@
+CONCEPT
+=======
+Search types
+------------
+- all
+- author
+- title
+- author + title
+- year from + year to
+- publisher
+
+Structure
+---------
+- title
+- author
+- publisher
+- year
+- price
+- cover
+- info
+-- pages
+-- format
+
+API
+---
+new()
+my $structure_hr = get($search_hr)
+
+TODO
+----
+- Iteration on search results?
