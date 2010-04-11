@@ -16,6 +16,7 @@ use Web::Scraper;
 use WWW::Search qw(generic_option);
 
 # Constants.
+Readonly::Scalar our $MAINTAINER => 'Michal Spacek <skim@cpan.org>';
 Readonly::Scalar my $MELCER_CZ => 'http://melcer.cz/';
 Readonly::Scalar my $MELCER_CZ_ACTION1 => 'sindex.php?akc=hledani&s=0&kos=0'.
 	'&hltext=$hltex&kateg=';
@@ -34,6 +35,8 @@ sub native_setup_search {
 			'@content',
 			\&_get_encoding,
 		];
+		process '//table[@width="100"]/tr/td[5]/a',
+			'next_url' => '@href';
 		process '//td[@height="330"]/node()[3]', 'records' => 'RAW';
 		process '//td[@height="330"]/table[@width="560"]', 'books[]'
 			=> scraper {
