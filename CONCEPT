@@ -57,3 +57,9 @@ action: sindex.php?akc=hledanivyd&s=0&kos=0&vydavatel=$vydavatel&kateg=
 params:
 - vydavatel: query_publisher
 - Submit222: Hledat
+
+bugs on melcer.cz
+-----------------
+- Mixing html elements.
+- No encoding in HTTP header.
+- No structured data.
