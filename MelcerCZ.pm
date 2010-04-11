@@ -62,7 +62,9 @@ sub native_retrieve_some {
 
 	my $self = shift;
 
-	# TODO Escape query.
+	# Query.
+	my $i = Text::Iconv->new('utf-8', 'windows-1250');
+	my $query = $i->convert(decode_utf8($self->{'_query'}));
 
 	# Get content.
 	my $ua = LWP::UserAgent->new(
@@ -70,7 +72,7 @@ sub native_retrieve_some {
 	);
 	my $response = $ua->post($MELCER_CZ.$MELCER_CZ_ACTION1,
 		'Content' => {
-			'hltex' => $self->{'_query'},
+			'hltex' => $query,
 			'hledani' => 'Hledat',
 		},
 	);
