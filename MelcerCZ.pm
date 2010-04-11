@@ -39,7 +39,7 @@ sub native_setup_search {
 			=> scraper {
 
 			process '//tr/td/font/a', 'title' => 'RAW';
-			process '//tr/td[@width="136"]/node()[3]',
+			process '//tr/td[@width="136"]/font[2]',
 				'price' => 'RAW';
 			process '//tr[2]/td/font/strong', 'author' => 'RAW';
 			process '//tr[3]/td/font/div', 'info' => 'RAW';
