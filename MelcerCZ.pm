@@ -38,7 +38,8 @@ sub native_setup_search {
 		process '//td[@height="330"]/table[@width="560"]', 'books[]'
 			=> scraper {
 
-			process '//tr/td/font/a', 'title' => 'RAW';
+			process '//tr/td/font/a', 'title' => 'RAW',
+				'url' => '@href';
 			process '//tr/td[@width="136"]/font[2]',
 				'price' => 'RAW';
 			process '//tr[2]/td/font/strong', 'author' => 'RAW';
@@ -93,10 +94,8 @@ sub native_retrieve_some {
 
 		# Process each book.
 		foreach my $book_hr (@{$books_hr->{'books'}}) {
-			if (exists $book_hr->{'cover_url'}) {
-				$book_hr->{'cover_url'} = $MELCER_CZ.
-					$book_hr->{'cover_url'};
-			}
+			_fix_url($book_hr, 'cover_url');
+			_fix_url($book_hr, 'url');
 			push @{$self->{'cache'}}, $self->_process($book_hr);
 		}
 	}
@@ -119,6 +118,18 @@ sub _get_encoding {
 	} else {
 		return;
 	}
+}
+
+#------------------------------------------------------------------------------
+sub _fix_url {
+#------------------------------------------------------------------------------
+# Fix URL to absolute path.
+
+	my ($book_hr, $url) = @_;
+	if (exists $book_hr->{$url}) {
+		$book_hr->{$url} = $MELCER_CZ.$book_hr->{$url};
+	}
+	return;
 }
 
 #------------------------------------------------------------------------------
