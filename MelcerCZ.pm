@@ -130,6 +130,7 @@ sub _process {
 	$self->_process_one($book_hr, 'author');
 	$self->_process_one($book_hr, 'info');
 	$self->_process_one($book_hr, 'publisher');
+	$self->_process_one($book_hr, 'price');
 	$self->_process_one($book_hr, 'title');
 	return $book_hr;
 }
