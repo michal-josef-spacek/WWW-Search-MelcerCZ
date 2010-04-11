@@ -162,7 +162,7 @@ sub _process_one {
 	$book_hr->{$key} =~ s/^\s+//gms;
 	$book_hr->{$key} =~ s/\s+$//gms;
 
-	# Encode to utf8 for output.
+	# Encode to octets for output.
 	$book_hr->{$key} = encode_utf8($book_hr->{$key});
 
 	return;
