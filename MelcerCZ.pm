@@ -43,7 +43,7 @@ sub native_setup_search {
 				'price' => 'RAW';
 			process '//tr[2]/td/font/strong', 'author' => 'RAW';
 			process '//tr[3]/td/font/div', 'info' => 'RAW';
-			process '//tr[4]/td/div/a', 'url' => '@href';
+			process '//tr[4]/td/div/a', 'cover_url' => '@href';
 			process '//tr[5]/td[1]/font[2]', 'publisher' => 'RAW';
 			process '//tr[5]/td[2]/font[2]', 'year' => 'RAW';
 			return;
@@ -93,9 +93,9 @@ sub native_retrieve_some {
 
 		# Process each book.
 		foreach my $book_hr (@{$books_hr->{'books'}}) {
-			if (exists $book_hr->{'url'}) {
-				$book_hr->{'url'} = $MELCER_CZ.
-					$book_hr->{'url'};
+			if (exists $book_hr->{'cover_url'}) {
+				$book_hr->{'cover_url'} = $MELCER_CZ.
+					$book_hr->{'cover_url'};
 			}
 			push @{$self->{'cache'}}, $self->_process($book_hr);
 		}
