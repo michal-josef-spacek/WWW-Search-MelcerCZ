@@ -65,3 +65,4 @@ bugs on melcer.cz
 - No structured data.
 - Author field is in reverse form (Zíbrt Čeněk). Other names in info are
   in normal form.
+- In price is "." instead right czech ",".
