@@ -144,8 +144,13 @@ sub _process_one {
 
 	my ($self, $book_hr, $key) = @_;
 
+	# No value.
+	if (! exists $book_hr->{$key}) {
+		return;
+	}
+
 	# Encode to utf8.
-	if ($self->{'_iconv'} && exists $book_hr->{$key}) {
+	if ($self->{'_iconv'}) {
 		$book_hr->{$key} = $self->{'_iconv'}->convert(
 			$book_hr->{$key});
 	}
