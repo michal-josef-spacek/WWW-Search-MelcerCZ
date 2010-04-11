@@ -3,7 +3,6 @@ TODO
 4. Pridat dalsi typy vyhledavani.
 5. Dokumentace.
 6. Pridat zpracovani dalsi strany vyhledavani.
-7. Zpracovani ceny nefunguje?
 8.
 
 Applied
@@ -15,4 +14,7 @@ OK [20100411] skim
 OK [20100411] skim
 
 3. Opravit posilani post parametru, kdyz je zadavam v utf8.
+OK [20100411] skim
+
+7. Zpracovani ceny nefunguje?
 OK [20100411] skim
