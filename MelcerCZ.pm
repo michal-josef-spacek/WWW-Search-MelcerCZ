@@ -8,11 +8,10 @@ use strict;
 use warnings;
 
 # Modules.
-#use LWP::UserAgent;
-use WWW::Search qw(generic_option);
-use WWW::SearchResult;
-#use XML::Simple;
+use LWP::UserAgent;
 use Readonly;
+use Web::Scraper;
+use WWW::Search qw(generic_option);
 
 # Constants.
 Readonly::Scalar my $MELCER_CZ_BASE_URL => 'http://www.melcer.cz/sindex.php'.
@@ -29,6 +28,23 @@ sub native_setup_search {
 	my ($self, $query) = @_;
 	$self->{'_offset'} = 0;
 	$self->{'_query'} = $query;
+	$self->{'_def'} = scraper {
+		process '//td[@height="330"]/node()[3]', 'records' => 'RAW';
+		process '//td[@height="330"]/table[@width="560"]', 'books[]'
+			=> scraper {
+
+			process '//tr/td/font/a', 'title' => 'RAW';
+			process '//tr/td[@width="136"]/node()[3]',
+				'price' => 'RAW';
+			process '//tr[2]/td/font/strong', 'author' => 'RAW';
+			process '//tr[3]/td/font/div', 'info' => 'RAW';
+			process '//tr[4]/td/div/a', 'url' => '@href';
+			process '//tr[5]/td[1]/font[2]', 'publisher' => 'RAW';
+			process '//tr[5]/td[2]/font[2]', 'year' => 'RAW';
+			return;
+		};
+		return;
+	};
 	return 1;
 }
 
@@ -46,26 +62,19 @@ sub native_retrieve_some {
 		'agent' => "WWW::Search::MelcerCZ/$VERSION",
 	);
 	my $response = $ua->post($MELCER_CZ_BASE_URL,
-		'hltex' => $self->{'_query'},
+		'Content' => {
+			'hltex' => $self->{'_query'},
+			'hledani' => 'Hledat',
+		},
 	);
-	if (! $response->is_success) {
-		return;
-	}
-	my $content = $response->content;
-	if ($content) {
-#		foreach my $book ( @{ $ref->{'BookList'}{'BookData'} }) {
-#			my $hit = WWW::SearchResult->new();
-#			$hit->{'book_id'} = $book->{'book_id'};
-#			$hit->{'isbn'} = $book->{'isbn'};
-#			$hit->{'language'} = $book->{'Details'}{'language'} || q{};
-#			$hit->{'summary'} = $book->{'Summary'} || q{};
-#			$hit->{'titlelong'} = $book->{'TitleLong'} || q{};
-#			$hit->{'notes'} = $book->{'Notes'} || q{};
-#			$hit->title( $book->{'Title'} );
-#			$hit->url( 'http://isbndb.com/search-all.html?kw=' . $book->{'isbn'} );
-#			push @{$self->{'cache'}}, $hit;
-#		}
-		print "$content\n";
+
+	# Process.
+	if ($response->is_success) {
+		my $content = $response->content;
+		my $book_hr = $self->{'_def'}->scrape($content);
+		foreach my $book_hr (@{$book_hr->{'books'}}) {
+			push @{$self->{'cache'}}, $book_hr;
+		}
 	}
 
 	return;
