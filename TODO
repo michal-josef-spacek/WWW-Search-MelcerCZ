@@ -1,6 +1,5 @@
 TODO
 ====
-3. Opravit posilani post parametru, kdyz je zadavam v utf8.
 4.
 
 Applied
@@ -9,4 +8,7 @@ Applied
 OK [20100411] skim
 
 2. Vyresit nejak kodovani dat. 
+OK [20100411] skim
+
+3. Opravit posilani post parametru, kdyz je zadavam v utf8.
 OK [20100411] skim
