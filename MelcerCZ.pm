@@ -14,8 +14,9 @@ use Web::Scraper;
 use WWW::Search qw(generic_option);
 
 # Constants.
-Readonly::Scalar my $MELCER_CZ_BASE_URL => 'http://www.melcer.cz/sindex.php'.
-	'?akc=hledani&s=0&kos=0&hltext=$hltex&kateg=';
+Readonly::Scalar my $MELCER_CZ => 'http://www.melcer.cz/';
+Readonly::Scalar my $MELCER_CZ_ACTION1 => 'sindex.php?akc=hledani&s=0&kos=0'.
+	'&hltext=$hltex&kateg=';
 
 # Version.
 our $VERSION = 0.01;
@@ -61,7 +62,7 @@ sub native_retrieve_some {
 	my $ua = LWP::UserAgent->new(
 		'agent' => "WWW::Search::MelcerCZ/$VERSION",
 	);
-	my $response = $ua->post($MELCER_CZ_BASE_URL,
+	my $response = $ua->post($MELCER_CZ.$MELCER_CZ_ACTION1,
 		'Content' => {
 			'hltex' => $self->{'_query'},
 			'hledani' => 'Hledat',
@@ -73,6 +74,10 @@ sub native_retrieve_some {
 		my $content = $response->content;
 		my $book_hr = $self->{'_def'}->scrape($content);
 		foreach my $book_hr (@{$book_hr->{'books'}}) {
+			if (exists $book_hr->{'url'}) {
+				$book_hr->{'url'} = $MELCER_CZ.
+					$book_hr->{'url'};
+			}
 			push @{$self->{'cache'}}, $book_hr;
 		}
 	}
