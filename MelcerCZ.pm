@@ -198,6 +198,20 @@ __END__
 
 WWW::Search::MelcerCZ - Class for searching http://melcer.cz
 
+=head1 METHODS
+
+=over 8
+
+=item C<native_setup_search($query)>
+
+TODO
+
+=item C<native_retrieve_some()>
+
+TODO
+
+=back
+
 =head1 DEPENDENCIES
 
 L<Encode(3pm)>,
