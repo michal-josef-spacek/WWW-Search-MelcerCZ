@@ -198,6 +198,10 @@ __END__
 
 WWW::Search::MelcerCZ - Class for searching http://melcer.cz
 
+=head1 SYNOPSIS
+
+TODO
+
 =head1 METHODS
 
 =over 8
@@ -211,6 +215,10 @@ TODO
 TODO
 
 =back
+
+=head1 EXAMPLE
+
+TODO
 
 =head1 DEPENDENCIES
 
