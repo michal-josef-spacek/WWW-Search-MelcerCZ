@@ -88,7 +88,6 @@ sub native_retrieve_some {
 		# Get books structure.
 		my $books_hr = $self->{'_def'}->scrape($content);
 
-	
 		# Iconv.
 		if (! $self->{'_iconv'} && $books_hr->{'encoding'}) {
 			$self->{'_iconv'} = Text::Iconv->new(
@@ -101,6 +100,10 @@ sub native_retrieve_some {
 			_fix_url($book_hr, 'url');
 			push @{$self->{'cache'}}, $self->_process($book_hr);
 		}
+
+		# Next url.
+		_fix_url($books_hr, 'next_url');
+		$self->next_url($books_hr->{'next_url'});
 	}
 
 	return;
