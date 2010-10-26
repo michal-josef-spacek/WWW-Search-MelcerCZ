@@ -187,3 +187,40 @@ sub _process_one {
 }
 
 1;
+
+__END__
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+WWW::Search::MelcerCZ - Class for searching http://melcer.cz
+
+=head1 DEPENDENCIES
+
+L<Encode(3pm)>,
+L<LWP::UserAgent(3pm)>,
+L<Readonly(3pm)>,
+L<Text::Iconv(3pm)>,
+L<Web::Scraper(3pm)>,
+L<WWW::Search(3pm)>.
+
+=head1 SEE ALSO
+
+L<WWW::Search(3pm)>.
+
+=head1 AUTHOR
+
+Michal Špaček L<tupinek@gmail.com>
+
+=head1 LICENSE AND COPYRIGHT
+
+BSD license.
+
+=head1 VERSION
+
+0.01
+
+=cut
