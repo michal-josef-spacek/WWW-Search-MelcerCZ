@@ -16,7 +16,7 @@ use WWW::Search qw(generic_option);
 # Constants.
 Readonly::Scalar our $MAINTAINER => 'Michal Spacek <skim@cpan.org>';
 Readonly::Scalar my $MELCER_CZ => 'http://melcer.cz/';
-Readonly::Scalar my $MELCER_CZ_ACTION1 => 'sindex.php?akc=hledani&s=0&kos=0'.
+Readonly::Scalar my $MELCER_CZ_ACTION1 => 'index.php?akc=hledani&s=0&kos=0'.
 	'&hltext=$hltex&kateg=';
 
 # Version.
