@@ -1,6 +1,4 @@
-#------------------------------------------------------------------------------
 package WWW::Search::MelcerCZ;
-#------------------------------------------------------------------------------
 
 # Pragmas.
 use base qw(WWW::Search);
@@ -24,11 +22,8 @@ Readonly::Scalar my $MELCER_CZ_ACTION1 => 'sindex.php?akc=hledani&s=0&kos=0'.
 # Version.
 our $VERSION = 0.01;
 
-#------------------------------------------------------------------------------
-sub native_setup_search {
-#------------------------------------------------------------------------------
 # Setup.
-
+sub native_setup_search {
 	my ($self, $query) = @_;
 	$self->{'_def'} = scraper {
 		process '//meta[@http-equiv="Content-Type"]', 'encoding' => [
@@ -59,11 +54,8 @@ sub native_setup_search {
 	return 1;
 }
 
-#------------------------------------------------------------------------------
-sub native_retrieve_some {
-#------------------------------------------------------------------------------
 # Get data.
-
+sub native_retrieve_some {
 	my $self = shift;
 
 	# Query.
@@ -109,15 +101,8 @@ sub native_retrieve_some {
 	return;
 }
 
-#------------------------------------------------------------------------------
-# Private subroutines and methods.
-#------------------------------------------------------------------------------
-
-#------------------------------------------------------------------------------
-sub _get_encoding {
-#------------------------------------------------------------------------------
 # Get enconding from Content-Type string.
-
+sub _get_encoding {
 	my $content_type = shift;
 	if ($content_type =~ m/.*charset=(.*)$/ms) {
 		return $1;
@@ -126,11 +111,8 @@ sub _get_encoding {
 	}
 }
 
-#------------------------------------------------------------------------------
-sub _fix_url {
-#------------------------------------------------------------------------------
 # Fix URL to absolute path.
-
+sub _fix_url {
 	my ($book_hr, $url) = @_;
 	if (exists $book_hr->{$url}) {
 		$book_hr->{$url} = $MELCER_CZ.$book_hr->{$url};
@@ -138,11 +120,8 @@ sub _fix_url {
 	return;
 }
 
-#------------------------------------------------------------------------------
-sub _process {
-#------------------------------------------------------------------------------
 # Process each parameter of structure.
-
+sub _process {
 	my ($self, $book_hr) = @_;
 	$self->_process_one($book_hr, 'author');
 	$self->_process_one($book_hr, 'info');
@@ -152,14 +131,10 @@ sub _process {
 	return $book_hr;
 }
 
-#------------------------------------------------------------------------------
-sub _process_one {
-#------------------------------------------------------------------------------
 # Process string to right output:
 # - Encode to utf8.
 # - Remove trailing whitespace.
-
-
+sub _process_one {
 	my ($self, $book_hr, $key) = @_;
 
 	# No value.
