@@ -13,7 +13,7 @@ WriteMakefile(
 		'Web::Scraper' => 0,
 		'WWW::Search' => 0,
 	},
-	'VERSION' => 0.01,
+	'VERSION' => 0.02,
 	'test' => {
 		'TESTS' => 't/WWW::Search::MelcerCZ/*.t',
 	},

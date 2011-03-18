@@ -6,4 +6,4 @@ use Test::More 'tests' => 1;
 print "Testing: version.\n";
 
 # Test.
-is($WWW::Search::MelcerCZ::VERSION, '0.01');
+is($WWW::Search::MelcerCZ::VERSION, '0.02');
