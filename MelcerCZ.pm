@@ -195,6 +195,10 @@ TODO
 
 TODO
 
+=head1 REPOSITORY
+
+L<https://github.com/tupinek/WWW-Search-MelcerCZ>
+
 =head1 DEPENDENCIES
 
 L<Encode>,
