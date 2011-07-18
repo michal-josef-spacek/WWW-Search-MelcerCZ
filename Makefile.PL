@@ -3,24 +3,30 @@ use strict;
 use warnings;
 
 # Modules.
-use ExtUtils::MakeMaker;
+use inc::Module::Install;
 
 # Definition.
-WriteMakefile(
-	'AUTHOR' => 'Michal Špaček <skim@cpan.org>',
-	'LICENSE' => 'bsd',
-	'NAME' => 'WWW::Search::MelcerCZ',
-	'PREREQ_PM' => {
-		'Encode' => 0,
-		'File::Object' => 0,
-		'LWP::UserAgent' => 0,
-		'Readonly' => 0,
-		'Text::Iconv' => 0,
-		'Web::Scraper' => 0,
-		'WWW::Search' => 0,
-	},
-	'VERSION' => 0.01,
-	'test' => {
-		'TESTS' => 't/WWW::Search::MelcerCZ/*.t',
-	},
-);
+abstract 'Class utilities.';
+author 'Michal Špaček <skim@cpan.org>';
+license 'bsd';
+name 'WWW-Search-MelcerCZ';
+requires 'Encode' => 0,
+requires 'LWP::UserAgent' => 0;
+requires 'Readonly' => 0;
+requires 'Text::Iconv' => 0;
+requires 'Web::Scraper' => 0;
+requires 'WWW::Search' => 0;
+resources 'repository' => {
+	'url' => 'git://github.com/tupinek/WWW-Search-MelcerCZ',
+	'web' => 'https://github.com/tupinek/WWW-Search-MelcerCZ',
+	'type' => 'git',
+};
+test_requires 'File::Object' => 0.01;
+test_requires 'Test::More' => 0;
+test_requires 'Test::Pod' => 0;
+test_requires 'Test::Pod::Coverage' => 0;
+tests_recursive;
+version '0.01';
+
+# Run.
+WriteAll();
