@@ -197,16 +197,16 @@ TODO
 
 =head1 DEPENDENCIES
 
-L<Encode(3pm)>,
-L<LWP::UserAgent(3pm)>,
-L<Readonly(3pm)>,
-L<Text::Iconv(3pm)>,
-L<Web::Scraper(3pm)>,
-L<WWW::Search(3pm)>.
+L<Encode>,
+L<LWP::UserAgent>,
+L<Readonly>,
+L<Text::Iconv>,
+L<Web::Scraper>,
+L<WWW::Search>.
 
 =head1 SEE ALSO
 
-L<WWW::Search(3pm)>.
+L<WWW::Search>.
 
 =head1 AUTHOR
 
