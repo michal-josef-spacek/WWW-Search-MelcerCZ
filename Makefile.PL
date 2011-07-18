@@ -6,7 +6,7 @@ use warnings;
 use inc::Module::Install;
 
 # Definition.
-abstract 'Class utilities.';
+abstract 'Class for searching http://melcer.cz .';
 author 'Michal Špaček <skim@cpan.org>';
 license 'bsd';
 name 'WWW-Search-MelcerCZ';
