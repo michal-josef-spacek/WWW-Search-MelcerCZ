@@ -16,11 +16,10 @@ requires 'Readonly' => 0;
 requires 'Text::Iconv' => 0;
 requires 'Web::Scraper' => 0;
 requires 'WWW::Search' => 0;
-resources 'repository' => {
-	'url' => 'git://github.com/tupinek/WWW-Search-MelcerCZ',
-	'web' => 'https://github.com/tupinek/WWW-Search-MelcerCZ',
-	'type' => 'git',
-};
+resources 'bugtracker' => 'https://rt.cpan.org/Public/Dist/Display.html'.
+	'?Name=WWW-Search-MelcerCZ';
+resources 'homepage' => 'https://github.com/tupinek/WWW-Search-MelcerCZ';
+resources 'repository' => 'git://github.com/tupinek/WWW-Search-MelcerCZ';
 test_requires 'English' => 0;
 test_requires 'File::Object' => 0.01;
 test_requires 'Test::More' => 0;
