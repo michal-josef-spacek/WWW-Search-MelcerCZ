@@ -1,7 +1,20 @@
+Changes
+inc/Module/Install.pm
+inc/Module/Install/Base.pm
+inc/Module/Install/Can.pm
+inc/Module/Install/Fetch.pm
+inc/Module/Install/Makefile.pm
+inc/Module/Install/Metadata.pm
+inc/Module/Install/ReadmeFromPod.pm
+inc/Module/Install/Win32.pm
+inc/Module/Install/WriteAll.pm
 Makefile.PL
 MANIFEST			This list of files
 MelcerCZ.pm
+META.yml
 README
+t/data/melcer_cz-20100411-Bass.html
+t/data/melcer_cz-20110318-Capek.html
 t/WWW-Search-MelcerCZ/00-use.t
 t/WWW-Search-MelcerCZ/01-version.t
 t/WWW-Search-MelcerCZ/02-pod_coverage.t
