@@ -10,6 +10,7 @@ abstract 'Class for searching http://melcer.cz .';
 author 'Michal Špaček <skim@cpan.org>';
 license 'bsd';
 name 'WWW-Search-MelcerCZ';
+readme_from 'MelcerCZ.pm';
 requires 'Encode' => 0,
 requires 'LWP::UserAgent' => 0;
 requires 'Readonly' => 0;
