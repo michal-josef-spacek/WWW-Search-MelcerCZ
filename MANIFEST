@@ -15,6 +15,7 @@ MANIFEST			This list of files
 MelcerCZ.pm
 META.yml
 README
+SIGNATURE
 t/data/melcer_cz-20100411-Bass.html
 t/data/melcer_cz-20110318-Capek.html
 t/WWW-Search-MelcerCZ/00-use.t
