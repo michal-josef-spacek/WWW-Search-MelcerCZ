@@ -20,7 +20,7 @@ Readonly::Scalar my $MELCER_CZ_ACTION1 => 'index.php?akc=hledani&s=0&kos=0'.
 	'&hltext=$hltex&kateg=';
 
 # Version.
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 # Setup.
 sub native_setup_search {
@@ -267,6 +267,6 @@ BSD license.
 
 =head1 VERSION
 
-0.01
+0.02
 
 =cut
