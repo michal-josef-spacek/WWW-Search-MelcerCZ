@@ -17,6 +17,7 @@ requires 'Readonly' => 0;
 requires 'Text::Iconv' => 0;
 requires 'Web::Scraper' => 0;
 requires 'WWW::Search' => 0;
+requires 'perl' => '5.6.2';
 resources 'bugtracker' => 'https://rt.cpan.org/Public/Dist/Display.html'.
 	'?Name=WWW-Search-MelcerCZ';
 resources 'homepage' => 'https://github.com/tupinek/WWW-Search-MelcerCZ';
