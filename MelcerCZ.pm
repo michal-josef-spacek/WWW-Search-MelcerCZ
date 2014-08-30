@@ -171,11 +171,16 @@ __END__
 
 =head1 NAME
 
-WWW::Search::MelcerCZ - Class for searching http://melcer.cz
+WWW::Search::MelcerCZ - Class for searching http://melcer.cz .
 
 =head1 SYNOPSIS
 
-TODO
+ use WWW::Search::MelcerCZ;
+ my $obj = WWW::Search->new('MelcerCZ');
+ $obj->native_query($query);
+ my $maintainer = $obj->maintainer; 
+ my $res_hr = $obj->next_result;
+ my $version = $obj->version;
 
 =head1 METHODS
 
@@ -183,21 +188,55 @@ TODO
 
 =item C<native_setup_search($query)>
 
-TODO
+ Setup.
 
 =item C<native_retrieve_some()>
 
-TODO
+ Get data.
 
 =back
 
 =head1 EXAMPLE
 
-TODO
+ # Pragmas.
+ use strict;
+ use warnings;
 
-=head1 REPOSITORY
+ # Modules.
+ use Data::Printer;
+ use WWW::Search::MelcerCZ;
 
-L<https://github.com/tupinek/WWW-Search-MelcerCZ>
+ # Arguments.
+ if (@ARGV < 1) {
+         print STDERR "Usage: $0 match\n";
+         exit 1;
+ }
+ my $match = $ARGV[0];
+
+ # Object.
+ my $obj = WWW::Search->new('MelcerCZ');
+ $obj->maximum_to_retrieve(1);
+
+ # Search.
+ $obj->native_query($match);
+ while (my $result_hr = $obj->next_result) {
+        p $result_hr;
+ }
+
+ # Output:
+ # Usage: /tmp/1Ytv23doz5 match
+
+ # Output with 'Čapek' argument:
+ # \ {
+ #     author      "Čapek Karel",
+ #     cover_url   "http://melcer.cz//img/books/images_big/142829.jpg",
+ #     info        "obálky a typo Zdenek Seydl, 179 + 156 stran, původní brože 8°, stav velmi dobrý",
+ #     price       "97.00 Kč",
+ #     publisher   "Československý spisovatel",
+ #     title       "Povídky z jedné a druhé kapsy (2 svazky)",
+ #     url         "http://melcer.cz//index.php?akc=detail&idvyrb=53259&hltex=%C8apek&autor=&nazev=&odroku=&doroku=&vydavatel=",
+ #     year        1967
+ # }
 
 =head1 DEPENDENCIES
 
@@ -211,6 +250,10 @@ L<WWW::Search>.
 =head1 SEE ALSO
 
 L<WWW::Search>.
+
+=head1 REPOSITORY
+
+L<https://github.com/tupinek/WWW-Search-MelcerCZ>
 
 =head1 AUTHOR
 
