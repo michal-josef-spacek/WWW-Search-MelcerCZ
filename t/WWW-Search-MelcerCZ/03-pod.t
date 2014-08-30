@@ -5,13 +5,14 @@ use warnings;
 # Modules.
 use English qw(-no_match_vars);
 use File::Object;
-use Test::More 'tests' => 1;
-use Test::Pod;
+use Test::More 'tests' => 2;
+use Test::NoWarnings;
 
 # Test.
 SKIP: {
 	if ($PERL_VERSION lt v5.8.0) {
 		skip 'Perl version lesser then 5.8.0.', 1;
 	}
-	pod_file_ok(File::Object->new->up(2)->file('MelcerCZ.pm')->s);
+	require Test::Pod;
+	Test::Pod::pod_file_ok(File::Object->new->up(2)->file('MelcerCZ.pm')->s);
 };
