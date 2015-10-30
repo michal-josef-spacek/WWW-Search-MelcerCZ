@@ -1,6 +1,8 @@
 Changes
 examples/ex1.pl
 inc/Module/Install.pm
+inc/Module/Install/AuthorRequires.pm
+inc/Module/Install/AuthorTests.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Can.pm
 inc/Module/Install/Fetch.pm
@@ -18,7 +20,7 @@ README
 SIGNATURE
 t/data/melcer_cz-20100411-Bass.html
 t/data/melcer_cz-20110318-Capek.html
-t/WWW-Search-MelcerCZ/00-use.t
-t/WWW-Search-MelcerCZ/01-version.t
-t/WWW-Search-MelcerCZ/02-pod_coverage.t
-t/WWW-Search-MelcerCZ/03-pod.t
+t/WWW-Search-MelcerCZ/01-use.t
+t/WWW-Search-MelcerCZ/02-version.t
+xt/WWW-Search-MelcerCZ/01-pod_coverage.t
+xt/WWW-Search-MelcerCZ/02-pod.t
