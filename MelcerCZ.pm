@@ -19,8 +19,8 @@ Readonly::Scalar my $MELCER_CZ_ACTION1 => 'index.php?akc=hledani&s=0&kos=0'.
 our $VERSION = 0.02;
 
 # Setup.
-sub native_setup_search {
-	my ($self, $query) = @_;
+sub _native_setup_search {
+	my ($self, $query, $options) = @_;
 	$self->{'_def'} = scraper {
 		process '//meta[@http-equiv="Content-Type"]', 'encoding' => [
 			'@content',
@@ -51,7 +51,7 @@ sub native_setup_search {
 }
 
 # Get data.
-sub native_retrieve_some {
+sub _native_retrieve_some {
 	my $self = shift;
 
 	# Query.
