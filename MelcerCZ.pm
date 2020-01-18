@@ -9,7 +9,7 @@ use Perl6::Slurp qw(slurp);
 use LWP::UserAgent;
 use Readonly;
 use Text::Iconv;
-use Web::Scraper;
+use WWW::Search::MelcerCZ::Utils qw(scraper_v20100411);
 
 # Constants.
 Readonly::Scalar our $MAINTAINER => 'Michal Josef Spacek <skim@cpan.org>';
@@ -22,30 +22,7 @@ our $VERSION = 0.02;
 # Setup.
 sub _native_setup_search {
 	my ($self, $query, $options) = @_;
-	$self->{'_def'} = scraper {
-		process '//meta[@http-equiv="Content-Type"]', 'encoding' => [
-			'@content',
-			\&_get_encoding,
-		];
-		process '//table[@width="100"]/tr/td[5]/a',
-			'next_url' => '@href';
-		process '//td[@height="330"]/node()[3]', 'records' => 'RAW';
-		process '//td[@height="330"]/table[@width="560"]', 'books[]'
-			=> scraper {
-
-			process '//tr/td/font/a', 'title' => 'RAW',
-				'url' => '@href';
-			process '//tr/td[@width="136"]/font[2]',
-				'price' => 'RAW';
-			process '//tr[2]/td/font/strong', 'author' => 'RAW';
-			process '//tr[3]/td/font/div', 'info' => 'RAW';
-			process '//tr[4]/td/div/a', 'cover_url' => '@href';
-			process '//tr[5]/td[1]/font[2]', 'publisher' => 'RAW';
-			process '//tr[5]/td[2]/font[2]', 'year' => 'RAW';
-			return;
-		};
-		return;
-	};
+	$self->{'_def'} = scraper_v20100411();
 	$self->{'_offset'} = 0;
 	$self->{'_query'} = $query;
 	return 1;
@@ -107,16 +84,6 @@ sub _process_content {
 	$self->next_url($books_hr->{'next_url'});
 
 	return;
-}
-
-# Get enconding from Content-Type string.
-sub _get_encoding {
-	my $content_type = shift;
-	if ($content_type =~ m/.*charset=(.*)$/ms) {
-		return $1;
-	} else {
-		return;
-	}
 }
 
 # Fix URL to absolute path.
