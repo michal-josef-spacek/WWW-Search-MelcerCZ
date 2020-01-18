@@ -71,28 +71,34 @@ sub _native_retrieve_some {
 
 	# Process.
 	if ($response->is_success) {
-		my $content = $response->content;
-
-		# Get books structure.
-		my $books_hr = $self->{'_def'}->scrape($content);
-
-		# Iconv.
-		if (! $self->{'_iconv'} && $books_hr->{'encoding'}) {
-			$self->{'_iconv'} = Text::Iconv->new(
-				$books_hr->{'encoding'}, 'utf-8');
-		}
-
-		# Process each book.
-		foreach my $book_hr (@{$books_hr->{'books'}}) {
-			_fix_url($book_hr, 'cover_url');
-			_fix_url($book_hr, 'url');
-			push @{$self->{'cache'}}, $self->_process($book_hr);
-		}
-
-		# Next url.
-		_fix_url($books_hr, 'next_url');
-		$self->next_url($books_hr->{'next_url'});
+		$self->_process_content($response->content);
 	}
+
+	return;
+}
+
+sub _process_content {
+	my ($self, $content) = @_;
+
+	# Get books structure.
+	my $books_hr = $self->{'_def'}->scrape($content);
+
+	# Iconv.
+	if (! $self->{'_iconv'} && $books_hr->{'encoding'}) {
+		$self->{'_iconv'} = Text::Iconv->new(
+			$books_hr->{'encoding'}, 'utf-8');
+	}
+
+	# Process each book.
+	foreach my $book_hr (@{$books_hr->{'books'}}) {
+		_fix_url($book_hr, 'cover_url');
+		_fix_url($book_hr, 'url');
+		push @{$self->{'cache'}}, $self->_process($book_hr);
+	}
+
+	# Next url.
+	_fix_url($books_hr, 'next_url');
+	$self->next_url($books_hr->{'next_url'});
 
 	return;
 }
