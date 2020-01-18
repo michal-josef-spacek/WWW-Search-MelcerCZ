@@ -5,6 +5,7 @@ use strict;
 use warnings;
 
 use Encode qw(decode_utf8 encode_utf8);
+use Perl6::Slurp qw(slurp);
 use LWP::UserAgent;
 use Readonly;
 use Text::Iconv;
@@ -54,24 +55,29 @@ sub _native_setup_search {
 sub _native_retrieve_some {
 	my $self = shift;
 
-	# Query.
-	my $i = Text::Iconv->new('utf-8', 'windows-1250');
-	my $query = $i->convert(decode_utf8($self->{'_query'}));
+	if (defined $self->{search_from_file}) {
+		my $content = slurp($self->{search_from_file});
+		$self->_process_content($content);
+	} else {
+		# Query.
+		my $i = Text::Iconv->new('utf-8', 'windows-1250');
+		my $query = $i->convert(decode_utf8($self->{'_query'}));
 
-	# Get content.
-	my $ua = LWP::UserAgent->new(
-		'agent' => "WWW::Search::MelcerCZ/$VERSION",
-	);
-	my $response = $ua->post($MELCER_CZ.$MELCER_CZ_ACTION1,
-		'Content' => {
-			'hltex' => $query,
-			'hledani' => 'Hledat',
-		},
-	);
+		# Get content.
+		my $ua = LWP::UserAgent->new(
+			'agent' => "WWW::Search::MelcerCZ/$VERSION",
+		);
+		my $response = $ua->post($MELCER_CZ.$MELCER_CZ_ACTION1,
+			'Content' => {
+				'hltex' => $query,
+				'hledani' => 'Hledat',
+			},
+		);
 
-	# Process.
-	if ($response->is_success) {
-		$self->_process_content($response->content);
+		# Process.
+		if ($response->is_success) {
+			$self->_process_content($response->content);
+		}
 	}
 
 	return;

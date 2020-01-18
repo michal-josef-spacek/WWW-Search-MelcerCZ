@@ -18,6 +18,7 @@ name 'WWW-Search-MelcerCZ';
 readme_from 'MelcerCZ.pm';
 recursive_author_tests('xt');
 requires 'Encode' => 0,
+requires 'Perl6::Slurp' => 0,
 requires 'LWP::UserAgent' => 0;
 requires 'Readonly' => 0;
 requires 'Text::Iconv' => 0;
