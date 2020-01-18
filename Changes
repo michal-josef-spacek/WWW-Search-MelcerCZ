@@ -4,6 +4,7 @@
  - Move author tests to xt/ directory.
  - Remove diacritics from author name in Makefile.PL.
  - Remove obsolete code from module.
+ - Update .travis.yml to reality.
  - Update Module::Install to 1.19 version.
  - Update copyright years.
 
