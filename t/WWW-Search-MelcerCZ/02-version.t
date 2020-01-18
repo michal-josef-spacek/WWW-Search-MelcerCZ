@@ -1,8 +1,6 @@
-# Pragmas.
 use strict;
 use warnings;
 
-# Modules.
 use WWW::Search::MelcerCZ;
 use Test::More 'tests' => 2;
 use Test::NoWarnings;

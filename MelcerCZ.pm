@@ -1,11 +1,9 @@
 package WWW::Search::MelcerCZ;
 
-# Pragmas.
 use base qw(WWW::Search);
 use strict;
 use warnings;
 
-# Modules.
 use Encode qw(decode_utf8 encode_utf8);
 use LWP::UserAgent;
 use Readonly;
@@ -18,7 +16,6 @@ Readonly::Scalar my $MELCER_CZ => 'http://melcer.cz/';
 Readonly::Scalar my $MELCER_CZ_ACTION1 => 'index.php?akc=hledani&s=0&kos=0'.
 	'&hltext=$hltex&kateg=';
 
-# Version.
 our $VERSION = 0.02;
 
 # Setup.
@@ -197,11 +194,9 @@ WWW::Search::MelcerCZ - Class for searching http://melcer.cz .
 
 =head1 EXAMPLE
 
- # Pragmas.
  use strict;
  use warnings;
 
- # Modules.
  use Data::Printer;
  use WWW::Search::MelcerCZ;
 
