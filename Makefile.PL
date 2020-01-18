@@ -5,7 +5,7 @@ use inc::Module::Install;
 
 # Definition.
 abstract 'Class for searching http://melcer.cz .';
-author 'Michal Spacek <skim@cpan.org>';
+author 'Michal Josef Spacek <skim@cpan.org>';
 author_requires 'English' => 0;
 author_requires 'File::Object' => 0.01;
 author_requires 'Test::More' => 0;

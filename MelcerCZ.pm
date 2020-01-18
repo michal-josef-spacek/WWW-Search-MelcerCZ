@@ -11,7 +11,7 @@ use Text::Iconv;
 use Web::Scraper;
 
 # Constants.
-Readonly::Scalar our $MAINTAINER => 'Michal Spacek <skim@cpan.org>';
+Readonly::Scalar our $MAINTAINER => 'Michal Josef Spacek <skim@cpan.org>';
 Readonly::Scalar my $MELCER_CZ => 'http://melcer.cz/';
 Readonly::Scalar my $MELCER_CZ_ACTION1 => 'index.php?akc=hledani&s=0&kos=0'.
 	'&hltext=$hltex&kateg=';
@@ -261,13 +261,13 @@ L<https://github.com/tupinek/WWW-Search-MelcerCZ>
 
 =head1 AUTHOR
 
-Michal Špaček L<mailto:skim@cpan.org>
+Michal Josef Špaček L<mailto:skim@cpan.org>
 
 L<http://skim.cz>
 
 =head1 LICENSE AND COPYRIGHT
 
- © Michal Špaček 2010-2020
+ © Michal Josef Špaček 2010-2020
  BSD 2-Clause License
 
 =head1 VERSION
