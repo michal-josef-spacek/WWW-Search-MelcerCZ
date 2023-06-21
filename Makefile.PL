@@ -29,6 +29,7 @@ resources 'bugtracker' => 'https://rt.cpan.org/Public/Dist/Display.html'.
 	'?Name=WWW-Search-MelcerCZ';
 resources 'homepage' => 'https://github.com/tupinek/WWW-Search-MelcerCZ';
 resources 'repository' => 'git://github.com/tupinek/WWW-Search-MelcerCZ';
+test_requires 'File::Object' => 0;
 test_requires 'Test::More' => 0;
 test_requires 'Test::NoWarnings' => 0;
 tests_recursive;
