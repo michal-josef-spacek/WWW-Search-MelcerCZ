@@ -8,7 +8,7 @@
  - Remove diacritics from author name in Makefile.PL.
  - Remove obsolete code from module.
  - Update .travis.yml to reality.
- - Update Module::Install to 1.19 version.
+ - Update Module::Install to 1.21 version.
  - Update author name.
  - Update copyright years.
 
